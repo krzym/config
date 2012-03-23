@@ -1,0 +1,6 @@
+shell zsh
+caption always "%n(%t) : %C"
+defscrollback 65535
+startup_message off
+hardstatus on
+hardstatus alwayslastline
