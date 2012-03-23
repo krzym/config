@@ -1,5 +1,5 @@
 shell zsh
-caption always "%n(%t) : %C"
+caption always "%n(%t) : %c"
 defscrollback 65535
 startup_message off
 hardstatus on
