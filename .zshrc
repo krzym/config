@@ -33,4 +33,9 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+alias ll='ls -l'
+alias lla='ls -la'
+alias netstat_antlp='netstat -antlp'
+alias v='vim'
+
 # Customize to your needs...
