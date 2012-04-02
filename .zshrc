@@ -37,5 +37,6 @@ alias ll='ls -l'
 alias lla='ls -la'
 alias netstat_antlp='netstat -antlp'
 alias v='vim'
+alias drbox='.dropbox-dist/dropboxd &'
 
 # Customize to your needs...
