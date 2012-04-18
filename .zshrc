@@ -12,7 +12,7 @@ ZSH_THEME="arrow"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
-CASE_SENSITIVE="true"
+#CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
@@ -31,10 +31,10 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 
 if [ -d /proc/acpi/battery/BAT0/ ]; then 
-    echo "#################### laptop found ##########################################################"
+    echo ">> laptop"
     plugins=(git archlinux mercurial vi-mode python perl battery)
 else
-    echo "#################### desktop found #########################################################"
+    echo ">> desktop"
     plugins=(git archlinux mercurial vi-mode python perl)
 fi
 
