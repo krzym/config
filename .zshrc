@@ -29,14 +29,27 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+
+if [ -d /proc/acpi/battery/BAT0/ ]; then 
+    echo "#################### laptop found ##########################################################"
+    plugins=(git archlinux mercurial vi-mode python perl battery)
+else
+    echo "#################### desktop found #########################################################"
+    plugins=(git archlinux mercurial vi-mode python perl)
+fi
 
 source $ZSH/oh-my-zsh.sh
 
 alias ll='ls -l'
 alias lla='ls -la'
-alias netstat_antlp='netstat -antlp'
+alias netantlp='sudo netstat -antlp'
 alias v='vim'
+alias t='htop'
 alias drbox='.dropbox-dist/dropboxd &'
+alias .='cd ..'
+alias 2.='cd ../..'
+alias 3.='cd ../../..'
+alias 4.='cd ../../../..'
+alias 5.='cd ../../../../..'
 
 # Customize to your needs...
