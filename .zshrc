@@ -8,7 +8,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="arrow"
 
 # Example aliases
-alias zshconfig="mate ~/.zshrc"
+#alias zshconfig="mate ~/.zshrc"
 #alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
@@ -30,28 +30,42 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 
-if [ -d /proc/acpi/battery/BAT0/ ]
-    then 
-    plugins=(git archlinux mercurial vi-mode python perl battery)
-elif [ -d  /sys/class/power_supply/BAT1/ ]
-    then
-    plugins=(git archlinux mercurial vi-mode python perl battery)
-else
-    plugins=(git archlinux mercurial vi-mode python perl)
-fi
+#if [ -d /proc/acpi/battery/BAT0/ ]
+#    then 
+#    plugins=(git archlinux mercurial python perl battery)
+#elif [ -d  /sys/class/power_supply/BAT1/ ]
+#    then
+#    plugins=(git archlinux mercurial python perl battery)
+#else
+
+plugins=(git mercurial archlinux python perl)
 
 source $ZSH/oh-my-zsh.sh
 
+# show files
 alias ll='ls -l'
 alias lla='ls -la'
-alias netantlp='sudo netstat -antlp'
-alias v='vim'
-alias t='htop'
-alias drbox='.dropbox-dist/dropboxd &'
+alias lltr='ls -ltr'
+
+# navigate
 alias .='cd ..'
 alias 2.='cd ../..'
 alias 3.='cd ../../..'
 alias 4.='cd ../../../..'
 alias 5.='cd ../../../../..'
+
+# history
+alias h='history'
+
+# network stuff
+alias netantlp='sudo netstat -antlp'
+alias dropbox='.dropbox-dist/dropboxd &'
+
+# editor
+alias v='vim'
+
+# system monitoring
+alias t='htop'
+
 
 # Customize to your needs...
