@@ -63,9 +63,11 @@ alias dropbox='.dropbox-dist/dropboxd &'
 
 # editor
 alias v='vim'
+alias suv='sudo vim'
 
 # system monitoring
 alias t='htop'
+alias sut='sudo htop'
 
 
 # Customize to your needs...
