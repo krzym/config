@@ -1,0 +1,4 @@
+xterm*background: grey20
+xterm*foreground: cadetblue1
+xterm*cursorColor: yellow
+xterm*cursorBlink: true
