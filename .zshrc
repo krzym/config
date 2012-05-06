@@ -71,7 +71,7 @@ alias ,t='htop'
 alias ,st='sudo htop'
 
 # system
-alias ,reboot='reboot'
-alias ,off='halt'
+alias ,reboot='sudo reboot'
+alias ,off='sudo halt'
 
 # Customize to your needs...
