@@ -43,9 +43,9 @@ plugins=(git mercurial archlinux python perl)
 source $ZSH/oh-my-zsh.sh
 
 # show files
-alias ll='ls -l'
-alias lla='ls -la'
-alias lltr='ls -ltr'
+alias ,ll='ls -l'
+alias ,la='ls -la'
+alias ,ltr='ls -ltr'
 
 # navigate
 alias .='cd ..'
@@ -55,19 +55,23 @@ alias 4.='cd ../../../..'
 alias 5.='cd ../../../../..'
 
 # history
-alias h='history'
+alias ,h='history'
 
 # network stuff
-alias netantlp='sudo netstat -antlp'
-alias dropbox='.dropbox-dist/dropboxd &'
+alias ,antlp='sudo netstat -antlp'
+alias ,db='.dropbox-dist/dropboxd &'
 
 # editor
-alias v='vim'
-alias suv='sudo vim'
+alias ,v='vim'
+alias ,sv='sudo vim'
+alias ,l='less'
 
 # system monitoring
-alias t='htop'
-alias sut='sudo htop'
+alias ,t='htop'
+alias ,st='sudo htop'
 
+# system
+alias ,reboot='reboot'
+alias ,off='halt'
 
 # Customize to your needs...
