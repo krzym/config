@@ -65,6 +65,7 @@ alias ,db='.dropbox-dist/dropboxd &'
 alias ,v='vim'
 alias ,sv='sudo vim'
 alias ,l='less'
+alias ,gr='grep --color -r -i'
 
 # system monitoring
 alias ,t='htop'
@@ -73,5 +74,10 @@ alias ,st='sudo htop'
 # system
 alias ,reboot='sudo reboot'
 alias ,off='sudo halt'
+alias ,scr='screen'
+
+# yaourt 
+alias yaupgaur='sudo yaourt -Syu --aur'
+alias yaupgdev='sudo yaoirt -Syu --devel'
 
 # Customize to your needs...
