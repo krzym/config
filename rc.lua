@@ -34,7 +34,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/dk-grey/theme.lua")
+beautiful.init("/usr/share/awesome/themes/dust/theme.lua")
 --beautiful.init("$HOME/.config/awesome/themes/conscience-awesome-theme/theme.lua")
 
 
