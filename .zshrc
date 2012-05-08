@@ -30,24 +30,17 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 
-#if [ -d /proc/acpi/battery/BAT0/ ]
-#    then 
-#    plugins=(git archlinux mercurial python perl battery)
-#elif [ -d  /sys/class/power_supply/BAT1/ ]
-#    then
-#    plugins=(git archlinux mercurial python perl battery)
-#else
+ARCH=`grep "Arch Linux" /etc/issue`
+SUSE=`grep "openSUSE" /etc/issue`
 
-LINUXOS=`cat /etc/issue |cut -d ' ' -f3`
-
-if [[ "$LINUXOS" == "ArchLinux" ]]
+if [ $ARCH ]
 then
     plugins=(git mercurial archlinux python perl)
 
     # yaourt
     alias yaupgaur='sudo yaourt -Syu --aur'
     alias yaupgdev='sudo yaoirt -Syu --devel'
-elif [[ "$LINUXOS" == "openSUSE" ]]
+elif [ $SUSE ]
 then
     plugins=(git mercurial python perl)
 
