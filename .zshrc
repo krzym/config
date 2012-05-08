@@ -38,14 +38,56 @@ COMPLETION_WAITING_DOTS="true"
 #    plugins=(git archlinux mercurial python perl battery)
 #else
 
-plugins=(git mercurial archlinux python perl)
+LINUXOS=`cat /etc/issue |cut -d ' ' -f3`
+
+if [[ "$LINUXOS" == "ArchLinux" ]]
+then
+    plugins=(git mercurial archlinux python perl)
+
+    # yaourt
+    alias yaupgaur='sudo yaourt -Syu --aur'
+    alias yaupgdev='sudo yaoirt -Syu --devel'
+elif [[ "$LINUXOS" == "openSUSE" ]]
+then
+    plugins=(git mercurial python perl)
+
+    # zypper
+    alias zyup='sudo zypper up' # update
+    alias zyin='sudo zypper in' # install
+    alias zydel='sudo zypper rm' # remove
+    alias zyve='zypper ve' # verify
+    alias zyupg='sudo zypper dup' # dist-upgrade
+    alias zylist='zypper lu' # list updates
+    alias zyreps='zypper se' # search
+    alias zysels='zypper ls' # list services
+    alias zyrels='zypper lr' # list repos
+    alias zycls='sudo zypper clean' # clean cache
+    alias zyrepref='sudo zypper ref' # refresh repo
+    alias zyrepadd='sudo zypper ar' # add repo
+    alias zyrepdel='sudo zypper rr' # remove repo
+    alias zyinfo='zypper if' # info
+    alias zylockadd='sudo zypper al' # add lock
+    alias zylockdel='sudo zypper rl' # remove lock
+    alias zylockls='zypper ll' # list locks
+    alias zylockcls='sudo zypper cl' # clear unused locks
+    alias zyps='zypper ps | less' # list running apps
+else
+    plugins=(git mercurial python perl)
+
+    # nothing
+fi
 
 source $ZSH/oh-my-zsh.sh
 
-# show files
-alias ,ll='ls -l'
-alias ,la='ls -la'
-alias ,ltr='ls -ltr'
+# files
+alias ll='ls -l'
+alias la='ls -la'
+alias ltr='ls -ltr'
+alias rm='rm -rfv' 
+alias rrm='sudo rm -rfv'
+alias cp='cp -rpfv' 
+alias rcp='sudo cp -rpfv'
+alias rmv='sudo mv'
 
 # navigate
 alias .='cd ..'
@@ -55,29 +97,25 @@ alias 4.='cd ../../../..'
 alias 5.='cd ../../../../..'
 
 # history
-alias ,h='history'
+alias h='history'
 
 # network stuff
-alias ,antlp='sudo netstat -antlp'
-alias ,db='.dropbox-dist/dropboxd &'
+alias antlp='sudo netstat -antlp'
+alias dbox='.dropbox-dist/dropboxd &'
 
 # editor
-alias ,v='vim'
-alias ,sv='sudo vim'
-alias ,l='less'
-alias ,gr='grep --color -r -i'
+alias v='vim'
+alias rv='sudo vim'
+alias l='less'
+alias gr='grep --color -r -i'
 
 # system monitoring
-alias ,t='htop'
-alias ,st='sudo htop'
+alias t='htop'
+alias rt='sudo htop'
 
 # system
-alias ,reboot='sudo reboot'
-alias ,off='sudo halt'
-alias ,scr='screen'
-
-# yaourt 
-alias yaupgaur='sudo yaourt -Syu --aur'
-alias yaupgdev='sudo yaoirt -Syu --devel'
+alias reboot='sudo reboot'
+alias off='sudo halt'
+alias scr='screen'
 
 # Customize to your needs...

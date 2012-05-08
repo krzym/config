@@ -1,6 +1,29 @@
+backtick 1 60 60 $HOME/config/get_battery
+backtick 2 60 60 $HOME/config/get_freemem
+backtick 3 60 60 $HOME/config/get_eth
+backtick 4 60 60 $HOME/config/get_ip
+
+# shell
 shell zsh
-caption always "%n(%t) : %c"
+
+# status bar
+# pc name|screen session+dir|battery|load|time+date 
+caption always "%{= kc}%H | %n: %t | bat:%1` | mem: %2`MB | eth: %3` / ip: %4` | load: %l%-21=%{= .m}%D %d.%m.%Y %0c"
+
+# scroll back
 defscrollback 65535
+
+# message
 startup_message off
+
+# always see status bar
 hardstatus on
 hardstatus alwayslastline
+
+# speaker bell
+vbell off
+
+# uft-8
+defutf8 on
+
+
