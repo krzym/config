@@ -171,11 +171,13 @@ function f_help(){
     printf "\t+ reboot \t\t\t\t# sudo reboot\n"
     printf "\t+ off \t\t\t\t\t# sudo halt\n"
     printf "\t+ src \t\t\t\t\t# screen\n"
+    printf "\t+ zshreload \t\t\t\t# reload .zshrc"
     printf "\t+----------------------------------------------------------------------------------------------------------------------+\n"    
 }
 
 # ZSH command help
 alias zshhelp='f_help'
+alias zshreload='source ~/.zshrc'
 
 
 # Customize to your needs...
