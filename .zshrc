@@ -94,7 +94,7 @@ alias h='history'
 
 # network stuff
 alias antlp='sudo netstat -antlp'
-alias dbox='.dropbox-dist/dropboxd &'
+alias dbox='~/.dropbox-dist/dropboxd &'
 
 # editor
 alias v='vim'
