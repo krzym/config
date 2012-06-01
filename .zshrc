@@ -111,6 +111,9 @@ alias reboot='sudo reboot'
 alias off='sudo halt'
 alias scr='screen'
 
+# PERL
+alias pcpan='perl -e shell -MCPAN'
+alias rpcpan='sudo perl -e shell -MCPAN'
 
 function f_help(){
     printf "\t+----------------------------------------------------------------------------------------------------------------------+\n"
@@ -172,6 +175,8 @@ function f_help(){
     printf "\t+ off \t\t\t\t\t# sudo halt\n"
     printf "\t+ src \t\t\t\t\t# screen\n"
     printf "\t+ zshreload \t\t\t\t# reload .zshrc\n"
+    printf "\t+ pcpan \t\t\t\t# perl cpan\n"
+    printf "\t+ rpcpan \t\t\t\t# sudo perl cpan\n"
     printf "\t+----------------------------------------------------------------------------------------------------------------------+\n"    
 }
 
