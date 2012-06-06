@@ -177,8 +177,18 @@ function f_help(){
     printf "\t+ zshreload \t\t\t\t# reload .zshrc\n"
     printf "\t+ pcpan \t\t\t\t# perl cpan\n"
     printf "\t+ rpcpan \t\t\t\t# sudo perl cpan\n"
+    printf "\t+ pwgen \t\t\t\t# pwgen <#> #generate random password\n"
     printf "\t+----------------------------------------------------------------------------------------------------------------------+\n"    
 }
+
+# pw Random 
+function f_pwrand(){
+    l=$1
+    tr -dc A-Za-z0-9_ < /dev/urandom | head -c ${l} | xargs
+}
+
+alias pwgen='f_pwrand'
+
 
 # ZSH command help
 alias zshhelp='f_help'
