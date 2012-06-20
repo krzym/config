@@ -94,6 +94,13 @@ alias h='history'
 
 # network stuff
 alias antlp='sudo netstat -antlp'
+
+# Dropbox
+# mount enc dropbox
+if [ ! 'mount | grep -i $HOME/dec' ]
+then 
+    encfs $HOME/Dropbox/enc $HOME/dec
+fi
 alias dbox='~/.dropbox-dist/dropboxd &'
 
 # editor
