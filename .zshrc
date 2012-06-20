@@ -97,9 +97,19 @@ alias antlp='sudo netstat -antlp'
 
 # Dropbox
 # mount enc dropbox
-if [ ! 'mount | grep -i $HOME/dec' ]
-then 
-    encfs $HOME/Dropbox/enc $HOME/dec
+ENCFSPID="$HOME/encfs.pid"
+
+if [ -f $ENCFSPID ]
+then
+    PID=`cat $ENCFSPID`
+else
+    PID=0
+fi
+
+if [ ! -e /proc/$PID -a /proc/$PID/exe ]
+then
+    encfs $HOME/Dropbox/enc $HOME/dec 
+    echo $! > $ENCFSPID
 fi
 alias dbox='~/.dropbox-dist/dropboxd &'
 
@@ -129,38 +139,38 @@ function f_help(){
         printf "\t+----- Arch Linux -----------------------------------------------------------------------------------------------------+\n"
         printf "\t+----- command \t\t\t +----- description\n\n"
         printf "\t+----- yaourt \t\t\t +---------------------\n"
-        printf "\t+ yaupgaur \t\t\t\t\t# upgrade Aur\n"
-        printf "\t+ yaupgdev \t\t\t\t\t# upgrade Devel\n"
-        printf "\t+ yaconf \t\t\t\t\t# Fix all configuration files with vimdiff\n"
-        printf "\t+ yaupg \t\t\t\t\t# Synchronize with repositories before upgrading\n"
+        printf "\t+ yaupgaur \t\t\t\t# upgrade Aur\n"
+        printf "\t+ yaupgdev \t\t\t\t# upgrade Devel\n"
+        printf "\t+ yaconf \t\t\t\t# Fix all configuration files with vimdiff\n"
+        printf "\t+ yaupg \t\t\t\t# Synchronize with repositories before upgrading\n"
         printf "\t+ yasu \t\t\t\t\t# Same as yaupg, but without confirmation \n"
         printf "\t+ yain \t\t\t\t\t# Install\n"
-        printf "\t+ yains \t\t\t\t\t# Install from a local file\n"
+        printf "\t+ yains \t\t\t\t# Install from a local file\n"
         printf "\t+ yare \t\t\t\t\t# Remove\n"
-        printf "\t+ yarem \t\t\t\t\t# Remove the specified package(s), its conf and unneeded dependencies\n"
-        printf "\t+ yarep \t\t\t\t\t# Display information\n"
-        printf "\t+ yaloc \t\t\t\t\t# Display information in local database\n"
-        printf "\t+ yareps \t\t\t\t\t# Search \n"
-        printf "\t+ yalocs \t\t\t\t\t# Search for package(s) in the local database\n"
-        printf "\t+ yaupd \t\t\t\t\t# Update and refresh the local package and ABS databases\n"
-        printf "\t+ yainsd \t\t\t\t\t# Install given package(s) as dependencies of another package\n"
-        printf "\t+ yamir \t\t\t\t\t# Force refresh of all package lists after updating /etc/pacman.d/mirrorlist\n"
+        printf "\t+ yarem \t\t\t\t# Remove the specified package(s), its conf and unneeded dependencies\n"
+        printf "\t+ yarep \t\t\t\t# Display information\n"
+        printf "\t+ yaloc \t\t\t\t# Display information in local database\n"
+        printf "\t+ yareps \t\t\t\t# Search \n"
+        printf "\t+ yalocs \t\t\t\t# Search for package(s) in the local database\n"
+        printf "\t+ yaupd \t\t\t\t# Update and refresh the local package and ABS databases\n"
+        printf "\t+ yainsd \t\t\t\t# Install given package(s) as dependencies of another package\n"
+        printf "\t+ yamir \t\t\t\t# Force refresh of all package lists after updating /etc/pacman.d/mirrorlist\n"
         printf "\n\t+----- pacman \t\t\t +---------------------\n"
-        printf "\t+ pacupg \t\t\t\t\t# Upgrade\n"
-        printf "\t+ pacin \t\t\t\t\t# Install\n"
-        printf "\t+ pacins \t\t\t\t\t# Install from a local file\n"
-        printf "\t+ pacre \t\t\t\t\t# Remove\n"
-        printf "\t+ pacrem \t\t\t\t\t# Remove the specified package(s), its conf and unneeded dependencies\n"
-        printf "\t+ pacrep \t\t\t\t\t# Display information\n"
-        printf "\t+ pacreps \t\t\t\t\t# Search\n"
-        printf "\t+ pacloc \t\t\t\t\t# Display information in local database\n"
-        printf "\t+ paclocs \t\t\t\t\t# Search for package(s) in the local database\n"
-        printf "\t+ pacupd \t\t\t\t\t# Update and refresh the local package and ABS databases\n"
-        printf "\t+ pacinsd \t\t\t\t\t# Install given package(s) as dependencies of another package\n"
-        printf "\t+ pacmir \t\t\t\t\t# Force refresh of all package lists\n"
-        printf "\t+ paclist \t\t\t\t\t# https://bbs.archlinux.org/viewtopic.php?id=93683\n"
-        printf "\t+ paclsorphans \t\t\t\t\t# ?\n"
-        printf "\t+ pacrmorphans \t\t\t\t\t# ?\n"
+        printf "\t+ pacupg \t\t\t\t# Upgrade\n"
+        printf "\t+ pacin \t\t\t\t# Install\n"
+        printf "\t+ pacins \t\t\t\t# Install from a local file\n"
+        printf "\t+ pacre \t\t\t\t# Remove\n"
+        printf "\t+ pacrem \t\t\t\t# Remove the specified package(s), its conf and unneeded dependencies\n"
+        printf "\t+ pacrep \t\t\t\t# Display information\n"
+        printf "\t+ pacreps \t\t\t\t# Search\n"
+        printf "\t+ pacloc \t\t\t\t# Display information in local database\n"
+        printf "\t+ paclocs \t\t\t\t# Search for package(s) in the local database\n"
+        printf "\t+ pacupd \t\t\t\t# Update and refresh the local package and ABS databases\n"
+        printf "\t+ pacinsd \t\t\t\t# Install given package(s) as dependencies of another package\n"
+        printf "\t+ pacmir \t\t\t\t# Force refresh of all package lists\n"
+        printf "\t+ paclist \t\t\t\t# https://bbs.archlinux.org/viewtopic.php?id=93683\n"
+        printf "\t+ paclsorphans \t\t\t\t# ?\n"
+        printf "\t+ pacrmorphans \t\t\t\t# ?\n"
 
     elif [ $SUSE ]
     then 
