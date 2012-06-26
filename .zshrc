@@ -97,7 +97,7 @@ alias antlp='sudo netstat -antlp'
 
 # Dropbox
 # mount enc dropbox
-ENCFSPID="/var/run/encfs.pid"
+ENCFSPID="/tmp/encfs.pid"
 
 if [ -f $ENCFSPID ]
 then
@@ -110,7 +110,7 @@ if [ ! -e /proc/$PID -a /proc/$PID/exe ]
 then
     encfs $HOME/Dropbox/enc $HOME/dec 
     # $$ oder $! ????
-    echo echo $$ > $ENCFSPID
+    echo $$ > $ENCFSPID
 fi
 alias dbox='~/.dropbox-dist/dropboxd &'
 
