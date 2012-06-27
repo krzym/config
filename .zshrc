@@ -33,6 +33,9 @@ COMPLETION_WAITING_DOTS="true"
 ARCH=`grep "Arch Linux" /etc/issue`
 SUSE=`grep "openSUSE" /etc/issue`
 
+# set PATH 
+PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin
+
 if [ $ARCH ]
 then
     plugins=(git mercurial archlinux python perl)
