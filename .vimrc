@@ -188,6 +188,18 @@ set tabstop=4
 " " next search
 " nnoremap <C-L> :nohl<CR><C-L>
 "
+" NEO2 Keyboard Mod
+"
+""no s h
+""no h s
+""no n j
+""no j n
+""no r k
+""no k r
+""no t l
+""no l t
+"
+"
 " VUNDLE
 " git clone git://github.com/gmarik/vundle.git
 "
