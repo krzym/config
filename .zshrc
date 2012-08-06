@@ -70,7 +70,7 @@ then
 else
     plugins=(git mercurial python perl)
 
-    # nothing
+    # do nothing
 fi
 
 source $ZSH/oh-my-zsh.sh
@@ -109,13 +109,13 @@ else
     PID=0
 fi
 
+# is encfs mounted?
 if [ ! -e /proc/$PID -a /proc/$PID/exe ]
 then
     encfs $HOME/Dropbox/enc $HOME/dec 
-    # $$ oder $! ????
     echo $PID > $ENCFSPID
 fi
-alias dbox='~/.dropbox-dist/dropboxd &'
+alias drop='~/.dropbox-dist/dropboxd &'
 
 # editor
 alias v='vim'
@@ -250,4 +250,4 @@ alias zshhelp='f_help'
 alias zshreload='source ~/.zshrc'
 
 
-# Customize to your needs...
+# END
