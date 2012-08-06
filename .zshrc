@@ -104,7 +104,7 @@ ENCFSPID="/tmp/encfs.pid"
 
 if [ -f $ENCFSPID ]
 then
-    PID=`cat $ENCFSPID`
+    PID=`pgrep encfs`
 else
     PID=0
 fi
@@ -113,7 +113,7 @@ if [ ! -e /proc/$PID -a /proc/$PID/exe ]
 then
     encfs $HOME/Dropbox/enc $HOME/dec 
     # $$ oder $! ????
-    echo $$ > $ENCFSPID
+    echo $PID > $ENCFSPID
 fi
 alias dbox='~/.dropbox-dist/dropboxd &'
 
