@@ -85,6 +85,10 @@ alias cp='cp -rpfv'
 alias rcp='sudo cp -rpfv'
 alias rmv='sudo mv'
 
+# FS
+alias rdd='sudo dd if=$1 of=$2'
+alias rfdiskls='sudo fdisk -l'
+
 # navigate
 alias .='cd ..'
 alias 2.='cd ../..'
@@ -135,6 +139,12 @@ alias scr='screen'
 # PERL
 alias pcpan='perl -e shell -MCPAN'
 alias rpcpan='sudo perl -e shell -MCPAN'
+
+# kill 
+alias rkill9='sudo kill -9'
+alias rkill15='sudo kill -15'
+alias rkillall='sudo killall'
+alias rpkill='sudo pkill'
 
 function f_help(){
     printf "\t+----------------------------------------------------------------------------------------------------------------------+\n"
@@ -219,7 +229,7 @@ function f_help(){
     printf "\t+ 5. \t\t\t\t\t# cd cd ../../../../..\n"
     printf "\t+ h \t\t\t\t\t# history\n"
     printf "\t+ antlp \t\t\t\t# sudo netstat -antlp\n"
-    printf "\t+ dbox \t\t\t\t\t# .dropbox-dist/dropboxd &\n"
+    printf "\t+ drop \t\t\t\t\t# .dropbox-dist/dropboxd &\n"
     printf "\t+ v \t\t\t\t\t# vim\n"
     printf "\t+ rv \t\t\t\t\t# sudo vim\n"
     printf "\t+ l \t\t\t\t\t# less <source>\n"
@@ -233,6 +243,12 @@ function f_help(){
     printf "\t+ pcpan \t\t\t\t# perl cpan\n"
     printf "\t+ rpcpan \t\t\t\t# sudo perl cpan\n"
     printf "\t+ pwgen \t\t\t\t# pwgen <#> #generate random password\n"
+	printf "\t+ rdd \t\t\t\t\t# dd if=$1 of=$2\n"
+	printf "\t+ rfdiskls \t\t\t\t# fdisk -l\n"
+	printf "\t+ rkill9 \t\t\t\t# kill -9 <PID>\n"
+	printf "\t+ rkill15 \t\t\t\t# kill -15 <PID>\n"
+	printf "\t+ rkillall \t\t\t\t# killall <name>\n"
+	printf "\t+ rpkill \t\t\t\t\t# pkill <name>\n"
     printf "\t+----------------------------------------------------------------------------------------------------------------------+\n"    
 }
 
@@ -251,3 +267,9 @@ alias zshreload='source ~/.zshrc'
 
 
 # END
+
+export PERL_LOCAL_LIB_ROOT="/home/machon/perl5";
+export PERL_MB_OPT="--install_base /home/machon/perl5";
+export PERL_MM_OPT="INSTALL_BASE=/home/machon/perl5";
+export PERL5LIB="/home/machon/perl5/lib/perl5/i586-linux-thread-multi:/home/machon/perl5/lib/perl5";
+export PATH="/home/machon/perl5/bin:$PATH";
