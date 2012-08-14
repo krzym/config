@@ -102,6 +102,10 @@ alias h='history'
 # network stuff
 alias antlp='sudo netstat -antlp'
 
+# ProcessID
+alias psg='ps faxvvvv | gr'
+alias rpsg='sudo ps faxvvvv | gr'
+
 # Dropbox
 # mount enc dropbox
 ENCFSPID="/tmp/encfs.pid"
@@ -249,6 +253,8 @@ function f_help(){
 	printf "\t+ rkill15 \t\t\t\t# kill -15 <PID>\n"
 	printf "\t+ rkillall \t\t\t\t# killall <name>\n"
 	printf "\t+ rpkill \t\t\t\t\t# pkill <name>\n"
+	printf "\t+ psg \t\t\t\t\t# ps faxvvvv | grep ....\n"
+	printf "\t+ rpsg \t\t\t\t\t# sudo ps faxvvvv | grep ....\n"
     printf "\t+----------------------------------------------------------------------------------------------------------------------+\n"    
 }
 
@@ -267,9 +273,3 @@ alias zshreload='source ~/.zshrc'
 
 
 # END
-
-export PERL_LOCAL_LIB_ROOT="/home/machon/perl5";
-export PERL_MB_OPT="--install_base /home/machon/perl5";
-export PERL_MM_OPT="INSTALL_BASE=/home/machon/perl5";
-export PERL5LIB="/home/machon/perl5/lib/perl5/i586-linux-thread-multi:/home/machon/perl5/lib/perl5";
-export PATH="/home/machon/perl5/bin:$PATH";
