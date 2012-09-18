@@ -118,12 +118,16 @@ else
 fi
 
 # is encfs mounted?
-if [ ! -e /proc/$PID -a /proc/$PID/exe ]
+if [ ! -e /proc/$PID ]
 then
     encfs $HOME/Dropbox/enc $HOME/dec 
     echo $PID > $ENCFSPID
 fi
 alias drop='~/.dropbox-dist/dropboxd &'
+
+# hidden fs
+alias mount_ext='sudo encfs /var/local/src /var/local/tmp'
+alias umount_ext='sudo umount /var/local/tmp'
 
 # editor
 alias v='vim'

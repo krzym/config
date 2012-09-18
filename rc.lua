@@ -34,12 +34,12 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/dust/theme.lua")
---beautiful.init("$HOME/.config/awesome/themes/conscience-awesome-theme/theme.lua")
+beautiful.init("/usr/share/awesome/themes/strict/theme.lua")
+--beautiful.init("$HOME/.config/awesome/themes/invaders/theme.lua")
 
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
+terminal = "urxvt"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
