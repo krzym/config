@@ -108,20 +108,17 @@ alias rpsg='sudo ps faxvvvv | gr'
 
 # Dropbox
 # mount enc dropbox
-ENCFSPID="/tmp/encfs.pid"
-
-if [ -f $ENCFSPID ]
+if pgrep encfs
 then
-    PID=`pgrep encfs`
+   	PID=`pgrep encfs`
 else
-    PID=0
+	PID="0"
 fi
 
 # is encfs mounted?
 if [ ! -e /proc/$PID -a /proc/$PID/exe ]
 then
-    encfs $HOME/Dropbox/enc $HOME/dec 
-    echo $PID > $ENCFSPID
+    encfs $HOME/Dropbox/enc $HOME/dec
 fi
 alias drop='~/.dropbox-dist/dropboxd &'
 
