@@ -116,7 +116,7 @@ else
 fi
 
 # is encfs mounted?
-if [ ! -e /proc/$PID ]
+if [ ! -e /proc/$PID -f /proc/$PID/exe ]
 then
     encfs $HOME/Dropbox/enc $HOME/dec
 fi
