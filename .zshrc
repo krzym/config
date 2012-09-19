@@ -110,13 +110,13 @@ alias rpsg='sudo ps faxvvvv | gr'
 # mount enc dropbox
 if pgrep encfs
 then
-   	PID=`pgrep encfs`
+   	PID=`pgrep encfs` > /dev/null 2>&1
 else
-	PID="0"
+	PID="0" > /dev/null 2>&1
 fi
 
 # is encfs mounted?
-if [ ! -e /proc/$PID -f /proc/$PID/exe ]
+if [[ ! -e /proc/$PID && -f /proc/$PID/exe ]]
 then
     encfs $HOME/Dropbox/enc $HOME/dec
 fi
