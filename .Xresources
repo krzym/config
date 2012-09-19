@@ -11,11 +11,11 @@
 
 ! Xft settings ---------------------------------------------------------------
 Xft.dpi:                        96
-Xft.antialias:                  false
+Xft.antialias:                  true
 Xft.rgba:                       rgb
-Xft.hinting:                    false
-!Xft.hintstyle:                  hintsfull
-!Xft.autohint:                   0
+Xft.hinting:                    true
+Xft.hintstyle:                  hintsfull
+Xft.autohint:                   0
 Xft.lcdfilter:                  lcddefault
 
 !----------------------------------------------------------------------------!
@@ -27,7 +27,7 @@ URxvt*geometry:					100x35
 URxvt*borderLess:				false
 URxvt*depth:					32
 URxvt*scrollBar_right:			true
-URxvt*font:					    xft:ProggyCleanTTSZ:pixelsize=14:antialias=false
+URxvt*font:					    xft:ProggyCleanTTSZ:pixelsize=14:antialias=true
 Urxvt*cursorColor:				white
 URxvt*scrollColor:				#111111
 URxvt*perl-ext-common:			default,clipboard,tabbed,matcher
