@@ -27,7 +27,7 @@ URxvt*geometry:					100x35
 URxvt*borderLess:				false
 URxvt*depth:					32
 URxvt*scrollBar_right:			true
-URxvt*font:					    xft:ProggyCleanTTSZ:pixelsize=14:antialias=true
+URxvt*font:					    xft:ProggyCleanTTSZ:pixelsize=10:antialias=true
 Urxvt*cursorColor:				white
 URxvt*scrollColor:				#111111
 URxvt*perl-ext-common:			default,clipboard,tabbed,matcher
