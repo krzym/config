@@ -118,7 +118,7 @@ fi
 # is encfs mounted?
 if [ ! -e /proc/$PID ]
 then
-    encfs $HOME/Dropbox/enc $HOME/dec
+    encfs $HOME/Dropbox/Apps/Cryptonite\ App\ Folder/enc $HOME/dec
 fi
 alias drop='~/.dropbox-dist/dropboxd &'
 
