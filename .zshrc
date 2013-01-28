@@ -33,7 +33,7 @@ COMPLETION_WAITING_DOTS="true"
 ARCH=`grep "Arch Linux" /etc/issue`
 SUSE=`grep "openSUSE" /etc/issue`
 DEBIAN=`grep "Debian GNU/Linux" /etc/issue`
-MINT=`grep "Mint" /etc/issue`
+MINT=`grep "Mint GNU/Linux" /etc/issue`
 
 # set PATH 
 PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin
