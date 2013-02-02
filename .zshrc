@@ -32,6 +32,8 @@ COMPLETION_WAITING_DOTS="true"
 
 ARCH=`grep "Arch Linux" /etc/issue`
 SUSE=`grep "openSUSE" /etc/issue`
+DEBIAN=`grep "Debian GNU/Linux" /etc/issue`
+MINT=`grep "Mint GNU/Linux" /etc/issue`
 
 # set PATH 
 PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin
@@ -67,6 +69,9 @@ then
     alias zylockls='zypper ll' # list locks
     alias zylockcls='sudo zypper cl' # clear unused locks
     alias zyps='zypper ps | less' # list running apps
+elif [ $DEBIAN ]
+then
+	plugins=(git mercurial python perl debian)
 else
     plugins=(git mercurial python perl)
 
@@ -239,6 +244,16 @@ function f_help(){
         printf "\t+ zylockls \t\t\t\t# list locks\n"
         printf "\t+ zylockcls \t\t\t\t# clear unsued locks\n"
         printf "\t+ zyps \t\t\t\t\t# list running apps\n"
+	elif [ $DEBIAN ]
+	then
+        printf "\t+----- Debian | Ubuntu | Mint ---------------------------------------------------------------------------------------------+\n"
+        printf "\t+----- command \t\t\t +----- description\n"
+		printf "\t+ ag \t\t\t\t\t# apt-get\n"
+		printf "\t+ ap \t\t\t\t\t# aptitude\n"
+		printf "\t+ acs \t\t\t\t\t# apt-cache search\n"
+		printf "\t+ aps \t\t\t\t\t# aptitude search\n"
+		printf "\t+ as \t\t\t\t\t# aptitude search inkl. Pkg-description and Pkg-version\n"
+		printf "\t+ afs \t\t\t\t\t# apt-file search --regexp\n"
     else
         printf "\t+----- nothing --------------------------------------------------------------------------------------------------------+\n"
     fi
