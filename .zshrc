@@ -121,11 +121,14 @@ else
 fi
 
 # is encfs mounted?
-if [ ! -e /proc/$PID ]
+if [ -d $HOME/Dropbox ]
 then
-    encfs $HOME/Dropbox/Apps/Cryptonite\ App\ Folder/enc $HOME/dec
+	if [ ! -e /proc/$PID ]
+	then
+    	encfs $HOME/Dropbox/Apps/Cryptonite\ App\ Folder/enc $HOME/dec
+	fi
+	alias drop='~/.dropbox-dist/dropboxd &'
 fi
-alias drop='~/.dropbox-dist/dropboxd &'
 
 # hidden fs
 alias mount_ext='sudo encfs /var/local/src /var/local/tmp'
