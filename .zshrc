@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="arrow"
+ZSH_THEME="candy"
 
 # Example aliases
 #alias zshconfig="mate ~/.zshrc"
@@ -137,8 +137,33 @@ alias t='htop'
 alias rt='sudo htop'
 
 # system
-alias reboot='sudo reboot'
-alias off='sudo halt'
+# virsh: VM 
+# browser
+# browser-tor
+# mail
+function f_shutdown(){
+	array=('browser' 'browser-tor' 'mail');
+	for i in ${array[@]}
+	do 
+		echo "shutdown $i "
+		sudo virsh shutdown $i
+		echo "ok" 
+	done
+	
+	if [[ "1" == "$1" ]]
+	then
+		sudo reboot	
+	elif [[ "2" == "$1" ]]
+	then
+		sudo halt
+	else
+		echo "$1 - unknow code!"
+	fi	
+
+}
+
+alias reboot='f_shutdown "1"'
+alias off='f_shutdown "2"'
 alias scr='screen'
 
 # PERL

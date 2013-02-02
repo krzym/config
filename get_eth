@@ -1,3 +1,5 @@
 #!/bin/bash
 
-ip a | grep -A 5 "state UP" | grep inet | grep -v inet6 | awk '{print $7}' 
+array=(`ip a | grep -A 5 "state UP" | grep inet | grep -v inet6 | awk '{print $7}'`)
+
+echo ${array[@]}

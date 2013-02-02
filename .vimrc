@@ -226,7 +226,7 @@ Bundle 'FuzzyFinder'
 Bundle 'git://git.wincent.com/command-t.git'
 " Fav plugins
 Bundle 'fugitive.vim'
-Bundle 'snipMate'
+" Bundle 'snipMate'
 Bundle 'NERD_Tree'
 Bundle 'buftabs'
 Bundle 'taglist.vim'
