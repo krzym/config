@@ -121,7 +121,7 @@ else
 fi
 
 # is encfs mounted?
-if [ -d $HOME/Dropbox ]
+if [ -d $HOME/Dropbox/Apps/Cryptonite\ App\ Folder/enc ]
 then
 	if [ ! -e /proc/$PID ]
 	then
