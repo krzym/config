@@ -150,11 +150,12 @@ alias rt='sudo htop'
 # browser-tor
 # mail
 function f_shutdown(){
-	array=('browser' 'browser-tor' 'mail');
+	array=('web' 'web-tor' 'email');
 	for i in ${array[@]}
 	do 
 		echo "shutdown $i "
 		sudo virsh shutdown $i
+		sleep 20
 		echo "ok" 
 	done
 	
