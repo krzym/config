@@ -318,7 +318,7 @@ function f_help(){
 	printf "\t+ rkill9 \t\t\t\t# kill -9 <PID>\n"
 	printf "\t+ rkill15 \t\t\t\t# kill -15 <PID>\n"
 	printf "\t+ rkillall \t\t\t\t# killall <name>\n"
-	printf "\t+ rpkill \t\t\t\t\t# pkill <name>\n"
+	printf "\t+ rpkill \t\t\t\t# pkill <name>\n"
 	printf "\t+ psg \t\t\t\t\t# ps faxvvvv | grep ....\n"
 	printf "\t+ rpsg \t\t\t\t\t# sudo ps faxvvvv | grep ....\n"
     printf "\t+----------------------------------------------------------------------------------------------------------------------+\n"    
