@@ -278,6 +278,7 @@ function f_help(){
 		printf "\t+ mydeb \t\t\t\t# Create a basic *.deb package\n"
 		printf "\t+ apt-copy \t\t\t# Create a simple script that can be use to 'dublicate' a system\n"
 		printf "\t+ apt-history \t\t# {install|upgrade|remove|rollback|list}\n"
+		printf "\t+ kerndeb \t\t\t\t# Building a kernel-package\n"
     else
         printf "\t+----- nothing --------------------------------------------------------------------------------------------------------+\n"
     fi
