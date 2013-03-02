@@ -146,19 +146,19 @@ alias rt='sudo htop'
 
 # system
 # virsh: VM 
-# browser
-# browser-tor
-# mail
+# web
+# web-tor
+# email
 function f_shutdown(){
 	array=('web' 'web-tor' 'email');
 	for i in ${array[@]}
 	do 
 		echo "shutdown $i "
 		sudo virsh shutdown $i
-		sleep 20
 		echo "ok" 
 	done
 	
+	sleep 30
 	if [[ "1" == "$1" ]]
 	then
 		sudo reboot	
