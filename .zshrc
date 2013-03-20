@@ -111,8 +111,8 @@ alias antlp='sudo netstat -antlp'
 alias psg='ps faxvvvv | gr'
 alias rpsg='sudo ps faxvvvv | gr'
 
-# Dropbox
-# mount enc dropbox
+# OwnCloud
+# mount enc ownCloud
 if pgrep encfs
 then
    	PID=`pgrep encfs` > /dev/null 2>&1
@@ -121,13 +121,13 @@ else
 fi
 
 # is encfs mounted?
-if [ -d $HOME/Dropbox/Apps/Cryptonite\ App\ Folder/enc ]
+if [ -d $HOME/ownCloud ]
 then
 	if [ ! -e /proc/$PID ]
 	then
-    	encfs $HOME/Dropbox/Apps/Cryptonite\ App\ Folder/enc $HOME/dec
+    	encfs $HOME/ownCloud $HOME/dec
 	fi
-	alias drop='~/.dropbox-dist/dropboxd &'
+	alias osync='owncloud'
 fi
 
 # hidden fs
