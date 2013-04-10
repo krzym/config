@@ -129,10 +129,8 @@ then
 	fi
 	alias osync='owncloud'
 fi
-
-# hidden fs
-alias mount_ext='sudo encfs /var/local/src /var/local/tmp'
-alias umount_ext='sudo umount /var/local/tmp'
+# manuel mount
+alias ownenc='encfs $HOME/ownCloud $HOME/dec'
 
 # editor
 alias v='vim'
@@ -299,7 +297,7 @@ function f_help(){
     printf "\t+ 5. \t\t\t\t\t# cd cd ../../../../..\n"
     printf "\t+ h \t\t\t\t\t# history\n"
     printf "\t+ antlp \t\t\t\t# sudo netstat -antlp\n"
-    printf "\t+ drop \t\t\t\t\t# .dropbox-dist/dropboxd &\n"
+    printf "\t+ ownenc \t\t\t\t\t# mount encfs for owncloud\n"
     printf "\t+ v \t\t\t\t\t# vim\n"
     printf "\t+ rv \t\t\t\t\t# sudo vim\n"
     printf "\t+ l \t\t\t\t\t# less <source>\n"
