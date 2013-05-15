@@ -335,5 +335,9 @@ alias pwgen='f_pwrand'
 alias zshhelp='f_help'
 alias zshreload='source ~/.zshrc'
 
-
+# FORTUNE
+#
+printf "\n"
+fortune
+printf "\n"
 # END
