@@ -36,7 +36,7 @@ DEBIAN=`grep "Debian GNU/Linux" /etc/issue`
 MINT=`grep "Mint GNU/Linux" /etc/issue`
 
 # true or false
-VM="false"
+VM="true"
 
 # set PATH 
 PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin
@@ -151,7 +151,7 @@ alias rt='sudo htop'
 # web-tor
 # email
 function f_shutdown(){
-	if $VM == "true"
+	if [[ "$VM" == "true" ]]
 	then
 		array=('web' 'web-tor' 'email');
 		for i in ${array[@]}
