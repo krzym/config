@@ -39,7 +39,7 @@ MINT=`grep "Mint GNU/Linux" /etc/issue`
 VM="false"
 
 # set PATH 
-PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin
+PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin:/bin:/usr/bin:/usr/local/bin:$HOME/bin
 
 if [ $ARCH ]
 then
@@ -98,7 +98,7 @@ alias rdd='sudo dd if=$1 of=$2'
 alias rfdiskls='sudo fdisk -l'
 
 # navigate
-alias .='cd ..'
+alias 1.='cd ..'
 alias 2.='cd ../..'
 alias 3.='cd ../../..'
 alias 4.='cd ../../../..'
@@ -150,10 +150,11 @@ alias rt='sudo htop'
 # web
 # web-tor
 # email
+# vpn
 function f_shutdown(){
 	if [[ "$VM" == "true" ]]
 	then
-		array=('web' 'web-tor' 'email');
+		array=('web' 'web-tor' 'email' 'vpn');
 		for i in ${array[@]}
 		do 
 			echo "shutdown $i "
