@@ -10,8 +10,8 @@ require("naughty")
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 --beautiful.init("/home/krzym/.config/awesome/zenburn/theme.lua")
-beautiful.init("/usr/share/awesome/themes/monochrome/theme.lua")
---beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+--beautiful.init("/usr/share/awesome/themes/monochrome/theme.lua")
+beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 --beautiful.init("/usr/share/awesome/themes/strict/theme.lua")
 --beautiful.init("/usr/share/awesome/themes/smoked/theme.lua")
 --beautiful.init("/usr/share/awesome/themes/snow/theme.lua")

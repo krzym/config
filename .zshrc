@@ -36,7 +36,7 @@ DEBIAN=`grep "Debian GNU/Linux" /etc/issue`
 MINT=`grep "Mint GNU/Linux" /etc/issue`
 
 # true or false
-VM="true"
+VM="false"
 
 # set PATH 
 PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin
@@ -188,6 +188,23 @@ alias rkill9='sudo kill -9'
 alias rkill15='sudo kill -15'
 alias rkillall='sudo killall'
 alias rpkill='sudo pkill'
+
+# nmap
+alias nmapst='sudo nmap -sT -v -P0 -A'
+alias nmapss='sudo nmap -sS -v -P0 -A'
+alias nmapsx='sudo nmap -sX -v -P0 -A'
+alias nmapstall='sudo nmap -sT -v -P0 -A -p1-65535'
+alias nmapssall='sudo nmap -sS -v -P0 -A -p1-65535'
+alias nmapsxall='sudo nmap -sX -v -P0 -A -p1-65535'
+alias nmapsa='sudo nmap -sA -v -P0 -A'
+alias nmapsw='sudo nmap -sW -v -P0 -A'
+alias nmapsm='sudo nmap -sM -v -P0 -A'
+alias nmapsaall='sudo nmap -sA -v -P0 -A -p1-65535'
+alias nmapswall='sudo nmap -sW -v -P0 -A -p1-65535'
+alias nmapsmall='sudo nmap -sM -v -P0 -A -p1-65535'
+alias nmapservices='sudo nmap -sV'
+
+
 
 function f_help(){
     printf "\t+----------------------------------------------------------------------------------------------------------------------+\n"
