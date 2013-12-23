@@ -39,7 +39,7 @@ MINT=`grep "Mint GNU/Linux" /etc/issue`
 VM="true"
 
 # set PATH 
-PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin
+PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin:/bin:/usr/bin:/usr/local/bin:$HOME/bin
 
 if [ $ARCH ]
 then
