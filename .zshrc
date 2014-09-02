@@ -39,7 +39,7 @@ MINT=`grep "Mint GNU/Linux" /etc/issue`
 VM="false"
 
 # set PATH 
-PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin:/bin:/usr/bin:/usr/local/bin:$HOME/bin
+export PATH="$PATH:$HOME/bin"
 
 if [ $ARCH ]
 then
@@ -169,7 +169,7 @@ function f_shutdown(){
 		sudo reboot	
 	elif [[ "2" == "$1" ]]
 	then
-		sudo halt
+		sudo shutdown -h now
 	else
 		echo "$1 - unknow code!"
 	fi	
