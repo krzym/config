@@ -365,3 +365,6 @@ printf "\n"
 fortune
 printf "\n"
 # END
+eval "$(rbenv init -)"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
