@@ -6,15 +6,19 @@ require("awful.rules")
 require("beautiful")
 -- Notification library
 require("naughty")
+<<<<<<< HEAD
 vicious = require("vicious")
 
+=======
+require("vicious")
+>>>>>>> e04d3a88c62e86ec1faf8cec3d4cf25bfba19153
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 --beautiful.init("/home/krzym/.config/awesome/zenburn/theme.lua")
 --beautiful.init("/usr/share/awesome/themes/monochrome/theme.lua")
 --beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
-beautiful.init("/usr/share/awesome/themes/awesome-themes-3.5/vinyl/theme.lua")
+beautiful.init("/usr/share/awesome/themes/vinyl/theme.lua")
 --beautiful.init("/usr/share/awesome/themes/smoked/theme.lua")
 --beautiful.init("/usr/share/awesome/themes/snow/theme.lua")
 --beautiful.init("/usr/share/awesome/themes/sky/theme.lua")
@@ -88,7 +92,14 @@ mytextclock = awful.widget.textclock({ align = "right" })
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
+-- memory usage
+-- Initialize widget
+--memwidget = widget({ type = "textbox" })
+-- -- Register widget
+--vicious.register(memwidget, vicious.widgets.mem, "$1% ($2MB/$3MB)", 13)
+
 -- Create a wibox for each screen and add it
+--
 mywibox = {}
 mypromptbox = {}
 mylayoutbox = {}
