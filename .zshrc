@@ -34,6 +34,7 @@ ARCH=`grep "Arch Linux" /etc/issue`
 SUSE=`grep "openSUSE" /etc/issue`
 DEBIAN=`grep "Debian GNU/Linux" /etc/issue`
 MINT=`grep "Mint GNU/Linux" /etc/issue`
+TRIS=`grep "Trisquel GNU/Linux" /etc/issue`
 
 # true or false
 VM="false"
@@ -72,7 +73,7 @@ then
     alias zylockls='zypper ll' # list locks
     alias zylockcls='sudo zypper cl' # clear unused locks
     alias zyps='zypper ps | less' # list running apps
-elif [ $DEBIAN ]
+elif [ $TRIS ]
 then
 	plugins=(git mercurial python perl debian)
 else
@@ -128,12 +129,12 @@ if [ -d $HOME/ownCloud ]
 then
 	if [ ! -e /proc/$PID ]
 	then
-    	encfs $HOME/ownCloud $HOME/dec
+    	encfs $HOME/ownCloud/clientsync $HOME/dec
 	fi
 	alias osync='owncloud'
 fi
 # manuel mount
-alias ownenc='encfs $HOME/ownCloud $HOME/dec'
+alias ownenc='encfs $HOME/ownCloud/clientsync $HOME/dec'
 
 # editor
 alias v='vim'
