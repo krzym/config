@@ -24,7 +24,7 @@ Xft*lcdfilter:                  lcddefault
 !									                                         !
 !----------------------------------------------------------------------------!
 XTerm*geometry:					100x35
-XTerm*font:					    xft:ProggyCleanTTSZ:pixelsize=14:antialias=true
+!XTerm*font:					    xft:ProggyCleanTTSZ:pixelsize=14:antialias=true
 XTerm*cursorColor:			 	red	
 XTerm*scrollBar:				false
 XTerm*utf8:						1

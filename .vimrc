@@ -231,6 +231,7 @@ Bundle 'NERD_Tree'
 Bundle 'buftabs'
 Bundle 'taglist.vim'
 Bundle 'NERDCommenter'
+Bundle 'dyng/ctrlsf.vim'
 "
 filetype plugin indent on     " required!
 "
