@@ -91,6 +91,14 @@ set autoindent
 " status
 " " line of a window
 set ruler
+set cursorline
+highlight  CursorLine ctermbg=Grey ctermfg=None
+autocmd InsertEnter * highlight  CursorLine ctermbg=Green ctermfg=Black
+autocmd InsertLeave * highlight  CursorLine ctermbg=Grey ctermfg=None
+set cursorcolumn
+highlight  CursorColumn ctermbg=Grey ctermfg=None
+autocmd InsertEnter * highlight  CursorColumn ctermbg=Green ctermfg=Black
+autocmd InsertLeave * highlight  CursorColumn ctermbg=Grey ctermfg=None
 "
 " " Always display the status line, even if only one window is displayed
 set laststatus=2
@@ -215,22 +223,25 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 "
 " original repos on github
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-rails.git'
+"Bundle 'tpope/vim-fugitive'
+"Bundle 'Lokaltog/vim-easymotion'
+"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+"Bundle 'tpope/vim-rails.git'
 " vim-scripts repos
-Bundle 'L9'
-Bundle 'FuzzyFinder'
+"Bundle 'L9'
+"Bundle 'FuzzyFinder'
 " non github repos
-Bundle 'git://git.wincent.com/command-t.git'
+"Bundle 'git://git.wincent.com/command-t.git'
 " Fav plugins
-Bundle 'fugitive.vim'
+"Bundle 'fugitive.vim'
 " Bundle 'snipMate'
-Bundle 'NERD_Tree'
-Bundle 'buftabs'
-Bundle 'taglist.vim'
-Bundle 'NERDCommenter'
+"Bundle 'NERD_Tree'
+"Bundle 'buftabs'
+"Bundle 'taglist.vim'
+"Bundle 'NERDCommenter'
+"
+" NewCompleCach Settings
+let g:neocomplcache_enable_at_startup = 1
 "
 filetype plugin indent on     " required!
 "
