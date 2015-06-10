@@ -32,9 +32,10 @@ COMPLETION_WAITING_DOTS="true"
 
 ARCH=`grep "Arch Linux" /etc/issue`
 SUSE=`grep "openSUSE" /etc/issue`
-DEBIAN=`grep "Debian GNU/Linux" /etc/issue`
+DEB=`grep "Debian GNU/Linux" /etc/issue`
 MINT=`grep "Mint GNU/Linux" /etc/issue`
 TRIS=`grep "Trisquel GNU/Linux" /etc/issue`
+UBU=`grep "Ubuntu" /etc/issue`
 
 # true or false
 VM="false"
@@ -73,7 +74,7 @@ then
     alias zylockls='zypper ll' # list locks
     alias zylockcls='sudo zypper cl' # clear unused locks
     alias zyps='zypper ps | less' # list running apps
-elif [ $TRIS ]
+elif [[ $TRIS || $DEB || $UBU || MINT ]]
 then
 	plugins=(git mercurial python perl debian)
 else
@@ -271,7 +272,7 @@ function f_help(){
         printf "\t+ zylockls \t\t\t\t# list locks\n"
         printf "\t+ zylockcls \t\t\t\t# clear unsued locks\n"
         printf "\t+ zyps \t\t\t\t\t# list running apps\n"
-	elif [ $DEBIAN ]
+	elif [[ $DEB || UBU || MINT || TRIS ]]
 	then
         printf "\t+----- Debian | Ubuntu | Mint ------------------------------------------------------------------------------------------+\n"
         printf "\t+----- command \t\t\t +----- description\n"
