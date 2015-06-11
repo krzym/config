@@ -74,7 +74,7 @@ then
     alias zylockls='zypper ll' # list locks
     alias zylockcls='sudo zypper cl' # clear unused locks
     alias zyps='zypper ps | less' # list running apps
-elif [[ $TRIS || $DEB || $UBU || MINT ]]
+elif [[ $TRIS || $DEB || $UBU || $MINT ]]
 then
 	plugins=(git mercurial python perl debian)
 else
