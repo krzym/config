@@ -74,7 +74,7 @@ then
     alias zylockls='zypper ll' # list locks
     alias zylockcls='sudo zypper cl' # clear unused locks
     alias zyps='zypper ps | less' # list running apps
-elif [[ $TRIS || $DEB || $UBU || $MINT ]]
+elif [ $TRIS ]
 then
 	plugins=(git mercurial python perl debian)
 else
@@ -272,8 +272,8 @@ function f_help(){
         printf "\t+ zylockls \t\t\t\t# list locks\n"
         printf "\t+ zylockcls \t\t\t\t# clear unsued locks\n"
         printf "\t+ zyps \t\t\t\t\t# list running apps\n"
-	elif [[ $DEB || UBU || MINT || TRIS ]]
-	then
+
+	elif  $DEB or $UBU or $MINT or $TRIS ; then
         printf "\t+----- Debian | Ubuntu | Mint ------------------------------------------------------------------------------------------+\n"
         printf "\t+----- command \t\t\t +----- description\n"
 		printf "\t+ ag \t\t\t\t\t# apt-get\n"
