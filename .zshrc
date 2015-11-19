@@ -130,7 +130,7 @@ if [ -d $HOME/ownCloud ]
 then
 	if [ ! -e /proc/$PID ]
 	then
-    	encfs $HOME/ownCloud $HOME/dec
+    	encfs $HOME/ownCloud/clientsync $HOME/dec
 	fi
 	alias osync='owncloud'
 fi
@@ -370,5 +370,8 @@ printf "\n"
 # ruby rbenv
 export PATH="$PATH:$HOME/.rbenv/bin"
 eval "$(rbenv init -)"
+
+# ssh-agent
+eval $(ssh-agent)
 # END
 
