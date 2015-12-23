@@ -1,0 +1,95 @@
+#!/bin/bash
+
+## firewall script for laptop/desktop
+
+WWAN="wwan0"
+WLAN="wlan0"
+ETH="eth0"
+
+IPT=$(which iptables)
+
+function fw-start {
+    echo "[*] DROP all"
+    $IPT -P INPUT DROP
+    $IPT -P FORWARD DROP
+    $IPT -P OUTPUT DROP
+ 
+    echo "[*] enable logging"
+    $IPT -N LOGGING
+
+    echo [*] "log <- www"
+    $IP -A INPUT -j LOGGING
+    $IPT -A LOGGING -m limit 2/min -j LOG --log-prefix "IPTables Packet Dropped: " --log-level 7
+    $IPT -A LOGGING -j DROP
+
+    echo "[*] ping -> www"
+    $IPT -A OUTPUT -p icmp --icmp-type echo-request -j ACCEPT
+    $IPT -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
+
+    echo "[*] allow lo"
+    $IPT -A INPUT -i lo -j ACCEPT
+    $IPT -A OUTPUT -o lo -j ACCEPT
+
+    echo "[*] dns -> www"
+    $IPT -A OUTPUT -p udp -o {$WWAN,$WLAN,$ETH} --dport 53 -j ACCEPT
+    $IPT -A INPUT -p udp -i {$WWAN,$WLAN,$ETH} --dport 53 -j ACCEPT
+
+    echo "[*] ssh -> www"
+    $IPT -A OUTPUT -o {$WWAN,$WLAN,$ETH} -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
+    $IPT -A INPUT -i {$WWAN,$WLAN,$ETH} -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT
+
+    echo "[*] http/https -> www"
+    $IPT -A OUTPUT -o {$WWAN,$WLAN,$ETH} -p tcp -m multiport --sport 80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
+    $IPT -A INPUT -i {$WWAN,$WLAN,$ETH} -p tcp -m multiport --sport 80,443 -m state --state ESTABLISHED -j ACCEPT
+
+
+    echo "[*] smtps -> www"
+    $IPT -A OUTPUT -o {$WWAN,$WLAN,$ETH} -p tcp -dport 587 -m state --state NEW,ESTABLISHED -j ACCEPT
+    $IPT -A INPUT -i {$WWAN,$WLAN,$ETH} -p tcp -sport 587 -m state --state NEW,ESTABLISHED -j ACCEPT
+
+    echo "[*] imaps -> www"
+    $IPT -A OUTPUT -o {$WWAN,$WLAN,$ETH} -p tcp -dport 993 -m state --state NEW,ESTABLISHED -j ACCEPT
+    $IPT -A INPUT -i {$WWAN,$WLAN,$ETH} -p tcp -sport 993 -m state --state NEW,ESTABLISHED -j ACCEPT
+
+    echo "[*] xmpp -> www"
+    $IPT -A OUTPUT -o {$WWAN,$WLAN,$ETH} -p tcp -dport 5222 -m state --state NEW,ESTABLISHED -j ACCEPT
+    $IPT -A INPUT -i {$WWAN,$WLAN,$ETH} -p tcp -sport 5222 -m state --state NEW,ESTABLISHED -j ACCEPT
+
+} 
+
+function fw-stop {
+    echo "[*] flush all"
+    $IPT -F
+    echo "[*] ACCEPT all"
+    $IPT -P INPUT ACCEPT
+    $IPT -P FORWARD ACCEPT
+    $IPT -P OUTPUT ACCEPT
+}
+
+function fw-restart {
+    echo "[*] stop"
+    fw-stop
+
+    echo "[*] start"
+    fw-start
+}
+
+
+case $1 in 
+    start)
+        echo "[*] starting iptables rules ..."
+        fw-start
+        ;;
+    stop)
+        echo "[*] stopping iptables rules ..."
+        fw-stop
+        ;;
+    restart)
+        echo "[*] restart iptables rules ..."
+        fw-restart
+        ;;
+    *)
+        echo "usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
+esac
