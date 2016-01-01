@@ -92,13 +92,13 @@ set autoindent
 " " line of a window
 set ruler
 set cursorline
-highlight  CursorLine ctermbg=Grey ctermfg=None
-autocmd InsertEnter * highlight  CursorLine ctermbg=Green ctermfg=Black
-autocmd InsertLeave * highlight  CursorLine ctermbg=Grey ctermfg=None
+highlight  CursorLine ctermbg=White ctermfg=Blue
+autocmd InsertEnter * highlight  CursorLine ctermbg=Yellow ctermfg=White
+autocmd InsertLeave * highlight  CursorLine ctermbg=White ctermfg=Blue
 set cursorcolumn
-highlight  CursorColumn ctermbg=Grey ctermfg=None
-autocmd InsertEnter * highlight  CursorColumn ctermbg=Green ctermfg=Black
-autocmd InsertLeave * highlight  CursorColumn ctermbg=Grey ctermfg=None
+highlight  CursorColumn ctermbg=White ctermfg=Blue
+autocmd InsertEnter * highlight  CursorColumn ctermbg=Yellow ctermfg=White
+autocmd InsertLeave * highlight  CursorColumn ctermbg=White ctermfg=Blue
 "
 " " Always display the status line, even if only one window is displayed
 set laststatus=2

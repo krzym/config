@@ -41,7 +41,8 @@ exec xscreensaver -no-splash &
 bindsym $mod+x exec xscreensaver-command -lock
 
 # wallpaper
-exec --no-startup-id feh --bg-scale ~/Pictures/The_Gnu_by_Momez.png
+exec --no-startup-id feh --bg-scale ~/wallpaper/32C3_knot.png
+#exec --no-startup-id feh --bg-scale ~/Pictures/The_Gnu_by_Momez.png
 
 # change focus
 bindsym $mod+j focus left

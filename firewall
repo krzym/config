@@ -2,9 +2,7 @@
 
 ## firewall script for laptop/desktop
 
-WWAN="wwan0"
-WLAN="wlan0"
-ETH="eth0"
+NIC=$1
 
 IPT=$(which iptables)
 
@@ -18,48 +16,55 @@ function fw-start {
     $IPT -N LOGGING
 
     echo [*] "log <- www"
-    $IP -A INPUT -j LOGGING
-    $IPT -A LOGGING -m limit 2/min -j LOG --log-prefix "IPTables Packet Dropped: " --log-level 7
-    $IPT -A LOGGING -j DROP
+    $IPT -A INPUT -j LOGGING
+    $IPT -A LOGGING -j LOG --log-prefix "IPTables Packet Dropped: " --log-level 7
+    #$IPT -A LOGGING -j DROP
 
     echo "[*] ping -> www"
-    $IPT -A OUTPUT -p icmp --icmp-type echo-request -j ACCEPT
-    $IPT -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
+    $IPT -A OUTPUT -p icmp --icmp-type 8 -j ACCEPT
+    $IPT -A INPUT -p icmp --icmp-type 0 -j ACCEPT
 
     echo "[*] allow lo"
     $IPT -A INPUT -i lo -j ACCEPT
     $IPT -A OUTPUT -o lo -j ACCEPT
 
     echo "[*] dns -> www"
-    $IPT -A OUTPUT -p udp -o {$WWAN,$WLAN,$ETH} --dport 53 -j ACCEPT
-    $IPT -A INPUT -p udp -i {$WWAN,$WLAN,$ETH} --dport 53 -j ACCEPT
+	$IPT -A OUTPUT -p udp -o $NIC --dport 53 -j ACCEPT
+    $IPT -A INPUT -p udp -i $NIC --sport 53 -j ACCEPT
 
     echo "[*] ssh -> www"
-    $IPT -A OUTPUT -o {$WWAN,$WLAN,$ETH} -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
-    $IPT -A INPUT -i {$WWAN,$WLAN,$ETH} -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT
+	$IPT -A OUTPUT -o $NIC -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
+    $IPT -A INPUT -i $NIC -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT
 
     echo "[*] http/https -> www"
-    $IPT -A OUTPUT -o {$WWAN,$WLAN,$ETH} -p tcp -m multiport --sport 80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
-    $IPT -A INPUT -i {$WWAN,$WLAN,$ETH} -p tcp -m multiport --sport 80,443 -m state --state ESTABLISHED -j ACCEPT
+    $IPT -A OUTPUT -o $NIC -p tcp -m multiport --dport 80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
+    $IPT -A INPUT -i $NIC -p tcp -m multiport --sport 80,443 -m state --state ESTABLISHED -j ACCEPT
 
 
-    echo "[*] smtps -> www"
-    $IPT -A OUTPUT -o {$WWAN,$WLAN,$ETH} -p tcp -dport 587 -m state --state NEW,ESTABLISHED -j ACCEPT
-    $IPT -A INPUT -i {$WWAN,$WLAN,$ETH} -p tcp -sport 587 -m state --state NEW,ESTABLISHED -j ACCEPT
+	echo "[*] smtps (587) -> www"
+    $IPT -A OUTPUT -o $NIC -p tcp --dport 587 -m state --state NEW,ESTABLISHED -j ACCEPT
+    $IPT -A INPUT -i $NIC -p tcp --sport 587 -m state --state ESTABLISHED -j ACCEPT
+
+	echo "[*] smtps (465) -> www"
+    $IPT -A OUTPUT -o $NIC -p tcp --dport 465 -m state --state NEW,ESTABLISHED -j ACCEPT
+    $IPT -A INPUT -i $NIC -p tcp --sport 465 -m state --state ESTABLISHED -j ACCEPT
 
     echo "[*] imaps -> www"
-    $IPT -A OUTPUT -o {$WWAN,$WLAN,$ETH} -p tcp -dport 993 -m state --state NEW,ESTABLISHED -j ACCEPT
-    $IPT -A INPUT -i {$WWAN,$WLAN,$ETH} -p tcp -sport 993 -m state --state NEW,ESTABLISHED -j ACCEPT
+    $IPT -A OUTPUT -o $NIC -p tcp --dport 993 -m state --state NEW,ESTABLISHED -j ACCEPT
+    $IPT -A INPUT -i $NIC -p tcp --sport 993 -m state --state ESTABLISHED -j ACCEPT
 
     echo "[*] xmpp -> www"
-    $IPT -A OUTPUT -o {$WWAN,$WLAN,$ETH} -p tcp -dport 5222 -m state --state NEW,ESTABLISHED -j ACCEPT
-    $IPT -A INPUT -i {$WWAN,$WLAN,$ETH} -p tcp -sport 5222 -m state --state NEW,ESTABLISHED -j ACCEPT
+    $IPT -A OUTPUT -o $NIC -p tcp --dport 5222 -m state --state NEW,ESTABLISHED -j ACCEPT
+    $IPT -A INPUT -i $NIC -p tcp --sport 5222 -m state --state ESTABLISHED -j ACCEPT
 
 } 
 
 function fw-stop {
     echo "[*] flush all"
     $IPT -F
+	$IPT -X
+	$IPT -t nat -F
+	$IPT -t nat -X
     echo "[*] ACCEPT all"
     $IPT -P INPUT ACCEPT
     $IPT -P FORWARD ACCEPT
@@ -75,7 +80,7 @@ function fw-restart {
 }
 
 
-case $1 in 
+case $2 in 
     start)
         echo "[*] starting iptables rules ..."
         fw-start
@@ -89,7 +94,7 @@ case $1 in
         fw-restart
         ;;
     *)
-        echo "usage: $0 {start|stop|restart}"
+        echo "usage: $0 {device} {start|stop|restart}"
         exit 1
         ;;
 esac
