@@ -363,12 +363,14 @@ alias zshreload='source ~/.zshrc'
 # FORTUNE
 #
 printf "\n"
-fortune
+#fortune
+~/config/zitat.py
 printf "\n"
 
 # ruby rbenv
 export PATH="$PATH:$HOME/.rbenv/bin"
 eval "$(rbenv init -)"
+eval $(ssh-agent)
 
 # ssh-agent
 eval $(ssh-agent)
