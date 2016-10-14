@@ -117,24 +117,24 @@ alias rpsg='sudo ps faxvvvv | gr'
 
 # OwnCloud
 # mount enc ownCloud
-if pgrep encfs
-then
-   	PID=`pgrep encfs` > /dev/null 2>&1
-else
-	PID="0" > /dev/null 2>&1
-fi
-
-# is encfs mounted?
-if [ -d $HOME/ownCloud ]
-then
-	if [ ! -e /proc/$PID ]
-	then
-    	encfs $HOME/ownCloud/clientsync $HOME/dec
-	fi
-	alias osync='owncloud'
-fi
-# manuel mount
-alias ownenc='encfs $HOME/ownCloud/clientsync $HOME/dec'
+#if pgrep encfs
+#then
+#   	PID=`pgrep encfs` > /dev/null 2>&1
+#else
+#	PID="0" > /dev/null 2>&1
+#fi
+#
+## is encfs mounted?
+#if [ -d $HOME/ownCloud ]
+#then
+#	if [ ! -e /proc/$PID ]
+#	then
+#    	encfs $HOME/ownCloud/clientsync $HOME/dec
+#	fi
+#	alias osync='owncloud'
+#fi
+## manuel mount
+#alias ownenc='encfs $HOME/ownCloud/clientsync $HOME/dec'
 
 # editor
 alias v='vim'

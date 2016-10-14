@@ -31,37 +31,23 @@ XTerm*utf8:						1
 XTerm*background:               #151515
 XTerm*foreground:               #999993
 
-! black
-XTerm*color0:                         #1a1a1a
-XTerm*color8:                         #404040
-!
-! ! red
-XTerm*color1:                         #d75f5f
-XTerm*color9:                         #EA8484
-!
-! ! green
-XTerm*color2:                         #87af5f
-XTerm*color10:                        #C7F09F
-!
-! ! yellow
-XTerm*color3:                         #ffaf5f
-XTerm*color11:                        #FFCC9A
-!
-! ! blue
-XTerm*color4:                         #87afd7
-XTerm*color12:                        #a5caef
-!
-! ! magenta
-XTerm*color5:                         #8787af
-XTerm*color13:                        #A6A6DE
-!
-! ! cyan
-XTerm*color6:                         #5f8787
-XTerm*color14:                        #69b2b2
-!
-! ! white
-XTerm*color7:                         #808080
-XTerm*color15:                        #d7d7d7
+XTerm*color0: #000000
+XTerm*color1: #800000
+XTerm*color2: #008000
+XTerm*color3: #808000
+XTerm*color4: #000080
+XTerm*color5: #800080
+XTerm*color6: #008080
+XTerm*color7: #c0c0c0
+XTerm*color8: #808080
+XTerm*color9: #ff0000
+XTerm*color10: #00ff00
+XTerm*color11: #ffff00
+XTerm*color12: #0000ff
+XTerm*color13: #ff00ff
+XTerm*color14: #0000ff
+XTerm*color15: #ffffff
+XTerm*color16: #000000
 XTerm*color17: #00005f
 XTerm*color18: #000087
 XTerm*color19: #0000af
