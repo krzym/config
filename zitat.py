@@ -26,7 +26,7 @@ def onlinezitat():
     for xline in root.findall('./channel/item'):
         zitat = xline.find('description').text
         author = xline.find('author').text
-        print ('[*] Online Zitat des Tages:\n\n"%s" \n\t\t\t\t -- %s' % (zitat, author))
+        print ('\x1b[4;33;40m[*] Online Zitat des Tages:\x1b[0m\n\n\x1b[4;34;40m"%s"\x1b[0m \n\t\t\t\t -- %s' % (zitat, author))
 
 def main():
     onlinezitat()
